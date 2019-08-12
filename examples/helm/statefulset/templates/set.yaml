@@ -61,7 +61,8 @@ spec:
           name: backup
           readOnly: true
       volumes:
-      - emptyDir: {}
-        name: pgdata
+      - name: pgdata
+        persistentVolumeClaim:
+          claimName: "{{.Values.pvc.name}}"
       - emptyDir: {}
         name: backup
